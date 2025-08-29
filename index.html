@@ -143,18 +143,50 @@
         <p class="text-lg sm:text-2xl text-gray-700 font-semibold mb-4">Graphic Designer</p>
         <p class="max-w-xl text-base sm:text-lg text-gray-500 mb-8">Crafting impactful visuals — from thumbnails, posters, and social media banners to branding visuals and high-converting ad creatives.</p>
         
-        </div>
-        <div class="mt-8 w-full">
-          <div class="relative overflow-hidden rounded-2xl border border-gray-200 bg-gradient-to-r from-indigo-100 via-pink-100 to-green-100 p-3">
-            <div class="animate-[scroll_18s_linear_infinite] whitespace-nowrap text-lg font-medium tracking-wide text-indigo-700 [--scroll:translateX(-50%)]">
-              <span class="mx-8">🎨 Stunning Thumbnails</span>
-              <span class="mx-8">📢 Social Media Banners</span>
-              <span class="mx-8">🖼️ Creative Posters</span>
-              <span class="mx-8">⚡ Branding Visuals</span>
-              <span class="mx-8">🚀 High-converting Ad Creatives</span>
-            </div>
-          </div>
-        </div>
+       <div class="mt-8 w-full">
+  <div class="relative overflow-hidden rounded-2xl border border-gray-200 bg-gradient-to-r from-indigo-100 via-pink-100 to-green-100 p-3">
+    <div class="scroll-container whitespace-nowrap text-lg font-medium tracking-wide text-indigo-700">
+      <span class="mx-8 glow"> Stunning Thumbnails</span>
+      <span class="mx-8 glow"> Social Media Banners</span>
+      <span class="mx-8 glow"> Creative Posters</span>
+      <span class="mx-8 glow"> Branding Visuals</span>
+      <span class="mx-8 glow"> High-converting Ad Creatives</span>
+      <!-- Duplicate content for smooth scrolling -->
+      <span class="mx-8 glow"> Stunning Thumbnails</span>
+      <span class="mx-8 glow"> Social Media Banners</span>
+      <span class="mx-8 glow"> Creative Posters</span>
+      <span class="mx-8 glow"> Branding Visuals</span>
+      <span class="mx-8 glow"> High-converting Ad Creatives</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .scroll-container {
+    display: inline-block;
+    animation: scroll 15s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .glow {
+    color: #4f46e5; /* Indigo */
+    font-weight: bold;
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.2),   /* Dark bottom shadow */
+        -1px -1px 2px rgba(255, 255, 255, 0.6); /* Light top highlight */
+}
+
+  }
+</style>
+
       </div>
       <style>@keyframes scroll {0% { transform: translateX(0); }100% { transform: translateX(-50%); }}</style>
     </section>
@@ -181,7 +213,11 @@
             </div>
 
             <!-- Portfolio Content Grid -->
-            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+           <!-- Portfolio Grid Container -->
+<div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-8">
+    <!-- Your portfolio items go here -->
+
+
                 <!-- Educational Thumbnails -->
                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="educational">
                     <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/main/SAVE_20250821_011656-01.jpeg" class="w-full h-full object-cover" alt="Educational Thumbnail 1" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
@@ -292,8 +328,7 @@
         <div class="footer__wrap">
           <div class="footer__shell">
             <div class="brand col--brand">
-              <div class="logo" aria-hidden="true">
-                <span class="logo__text">Z84</span>
+             
               </div>
               <div class="brand__title">
                 <div class="brand__name" aria-label="Brand name Z84">Z84</div>
@@ -405,7 +440,7 @@
     
             <div class="bottom">
               <div class="bottom__left">
-                <div class="logo" aria-hidden="true" style="width:36px;height:36px;border-radius:10px;font-size:18px"><span class="logo__text">Z84</span></div>
+                <div class="logo" aria-hidden="true" style="width:50px;height:36px;border-radius:10px;font-size:18px"><span class="logo__text">Z84</span></div>
                 <span class="copyright">© <span id="year"></span> Z84. All rights reserved.</span>
               </div>
               <a class="cta" href="https://www.instagram.com/thepankaj.z/" target="_blank" rel="noopener" aria-label="Follow on Instagram">
