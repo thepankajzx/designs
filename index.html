@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +8,10 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter & Poppins -->
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -20,9 +20,6 @@
         /* Custom styles */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
         }
         /* Simple animation for elements fading in */
         .fade-in {
@@ -37,92 +34,16 @@
             background-color: #4f46e5; /* indigo-600 */
             color: white;
         }
-        
-        /* New Futuristic Pricing Section Styles */
-        .pricing-section {
-            font-family: 'Arial', sans-serif;
-            background: #0f0f0f;
-            color: #fff;
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .pricing-title {
-            /* Responsive font size is now handled by Tailwind classes */
-            font-weight: bold;
-            color: #16d6fa;
-            text-shadow: 0 0 10px #16d6fa, 0 0 20px #0ff, 0 0 30px #16d6fa;
-            margin-bottom: 50px;
-        }
-        .pricing-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .pricing-card {
-            background: #1a1a1a;
-            border-radius: 15px;
-            padding: 25px;
-            width: 100%; /* Full width on mobile */
-            max-width: 300px; /* Max width on larger screens */
-            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .pricing-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(22, 214, 250, 0.5);
-        }
-        .pricing-card .icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-        }
-        .plan-name {
-            font-size: 28px;
-            color: #ffd217;
-            text-shadow: 0 0 6px #f6d200;
-            margin-bottom: 10px;
-        }
-        .price {
-            font-size: 40px;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #fff;
-        }
-        .price span {
-            font-size: 18px;
-            color: #aaa;
-        }
-        .pricing-card ul {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-            margin: 20px 0;
-        }
-        .pricing-card ul li {
-            padding: 8px 0;
-            font-size: 16px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #16d6fa;
-            color: #000;
-            font-weight: bold;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #0ff;
-            color: #000;
+        /* Custom active color for album covers button */
+        .filter-btn[data-filter="album-covers"].active {
+            background-color: #b91c1c; /* Tailwind red-700 */
         }
     </style>
 </head>
 <body class="bg-gray-100">
 
     <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <!-- Left Side: Logo -->
@@ -131,13 +52,12 @@
                 <!-- Right Side: Navigation -->
                 <nav class="hidden md:flex items-center space-x-6">
                     <a href="#work" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Work</a>
-                    <a href="#pricing" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Pricing</a>
                     <a href="#contact" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Contact</a>
                 </nav>
                 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -145,9 +65,8 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <a href="#work" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Work</a>
-            <a href="#pricing" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Pricing</a>
-            <a href="#contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
+            <a href="#work" class="block py-3 px-4 text-sm text-gray-700 hover:bg-gray-100 mobile-nav-link">Work</a>
+            <a href="#contact" class="block py-3 px-4 text-sm text-gray-700 hover:bg-gray-100 mobile-nav-link">Contact</a>
         </div>
     </header>
 
@@ -156,13 +75,14 @@
         
         <!-- Hero Section -->
         <section class="text-center py-12 md:py-20 fade-in">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-800 mb-4">Pankaj Chauhan</h1>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">Pankaj Chauhan</h1>
             <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-8">Creative Visual Designer specializing in compelling visuals that grab attention and boost engagement, from thumbnails and banners to product designs.</p>
-            <a href="#work" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full hover:bg-indigo-700 transition duration-300">View My Work</a>
+            <a href="#work" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">View My Work</a>
         </section>
 
         <!-- Portfolio Section -->
         <section id="work" class="fade-in py-12">
+            
             <!-- Main Filter Navigation -->
             <div class="flex justify-center flex-wrap gap-2 md:gap-4 mb-8">
                 <button class="filter-btn active font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="thumbnails">Thumbnails</button>
@@ -170,10 +90,11 @@
                 <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="posters">Posters</button>
                 <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="album-covers">Album Covers</button>
                 <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="product-designs">Product Designs</button>
+                <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="x-headers">X Headers</button>
             </div>
 
             <!-- Thumbnail Niches Filter Navigation -->
-            <div id="thumbnail-niche-filters" class="hidden flex justify-center flex-wrap gap-2 md:gap-4 mb-12">
+            <div id="thumbnail-niche-filters" class="flex justify-center flex-wrap gap-2 md:gap-4 mb-12">
                 <button class="niche-filter-btn active font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="educational">Educational</button>
                 <button class="niche-filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="fitness">Fitness</button>
                 <button class="niche-filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="stock-market">Stock Market</button>
@@ -181,142 +102,39 @@
                 <button class="niche-filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="podcast">Podcast</button>
             </div>
 
-            <!-- Portfolio Content -->
-            <div class="portfolio-content">
-                <!-- Thumbnails Niches Galleries -->
-                <div id="thumbnail-galleries">
-                    <div id="educational-gallery" class="niche-gallery space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/5.png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/6.png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/17.png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/Red%20and%20Yellow%20Bold%20Vibrant%20Exposed%20Truth%20YouTube%20Thumbnail%20(1).png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/Red%20and%20Yellow%20Bold%20Vibrant%20Exposed%20Truth%20YouTube%20Thumbnail%20(3).png?raw=true" class="w-full h-auto object-cover"></div></div>
-                        </div>
-                    </div>
-                    <div id="fitness-gallery" class="niche-gallery hidden space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/RONNIE.jpeg?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/TOP%205.png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/ultimate%20(1).png?raw=true" class="w-full h-auto object-cover"></div></div>
-                        </div>
-                    </div>
-                    <div id="stock-market-gallery" class="niche-gallery hidden space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/02-01.jpeg?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/CL12.png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/CLIENT%2012-01.jpeg?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/Green%20Passive%20Income%20Ideas%20YouTube%20Thumbnail%20(7).png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/HARSHIT%20(1).png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/HARSHIT.png?raw=true" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://github.com/thepankajzx/IMAGES/blob/main/LIVE%20Intraday%20%20(3).png?raw=true" class="w-full h-auto object-cover"></div></div>
-                        </div>
-                    </div>
-                    <div id="vlog-gallery" class="niche-gallery hidden space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/f59e0b/ffffff?text=Vlog+1" class="w-full h-auto object-cover"></div></div>
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/f59e0b/ffffff?text=Vlog+2" class="w-full h-auto object-cover"></div></div>
-                        </div>
-                    </div>
-                    <div id="podcast-gallery" class="niche-gallery hidden space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/6366f1/ffffff?text=Podcast+1" class="w-full h-auto object-cover"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other Main Galleries -->
-                <div id="banners" class="content-section hidden">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/ec4899/ffffff?text=Banner+1" class="w-full h-auto object-cover"></div></div>
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/ec4899/ffffff?text=Banner+2" class="w-full h-auto object-cover"></div></div>
-                    </div>
-                </div>
-                <div id="posters" class="content-section hidden">
-                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Poster+1" class="w-full h-auto object-cover"></div></div>
-                    </div>
-                </div>
-                <div id="album-covers" class="content-section hidden">
-                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/f97316/ffffff?text=Album+Cover+1" class="w-full h-auto object-cover"></div></div>
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/f97316/ffffff?text=Album+Cover+2" class="w-full h-auto object-cover"></div></div>
-                    </div>
-                </div>
-                <div id="product-designs" class="content-section hidden">
-                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden group"><div class="relative"><img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Product+Design+1" class="w-full h-auto object-cover"></div></div>
-                    </div>
+            <!-- Portfolio Content Grid -->
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="banners">
+                    <img src="https://github.com/thepankajzx/IMAGES/blob/main/BANNERS/SAVE_20240825_243841-01.jpeg?raw=true" class="w-full h-full object-cover" alt="YouTube Banner" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!-- New Pricing Section -->
-    <section id="pricing" class="pricing-section">
-        <h1 class="pricing-title text-3xl sm:text-4xl md:text-5xl">Our Pricing Plans</h1>
-        <div class="pricing-container">
-            <!-- Starter Pack -->
-            <div class="pricing-card">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
-                        <path fill="#16d6fa" d="M27.437,48h-4.873C20.047,48,18,45.953,18,43.436V37h14v6.436C32,45.953,29.953,48,27.437,48z M22,41v2.436C22,43.747,22.253,44,22.563,44h4.873C27.747,44,28,43.747,28,43.436V41H22z"></path>
-                        <rect width="11" height="4" x="21" y="30" fill="#ffd217"></rect>
-                        <path fill="#ffd217" d="M32,34h-4c0-3.289,1.477-6.408,4.051-8.56C34.561,23.343,36,20.266,36,17 c0-3.124-1.336-6.112-3.665-8.198c-2.361-2.115-5.413-3.086-8.6-2.732c-4.883,0.541-8.928,4.452-9.618,9.301 c-0.549,3.846,0.887,7.612,3.84,10.076C20.526,27.591,22,30.708,22,34h-4c0-2.102-0.949-4.1-2.605-5.481 c-4.025-3.358-5.983-8.484-5.237-13.711c0.943-6.627,6.469-11.974,13.139-12.712c4.258-0.473,8.533,0.886,11.707,3.728 C38.179,8.666,40,12.74,40,17c0,4.455-1.963,8.649-5.385,11.51C32.953,29.899,32,31.9,32,34z"></path>
-                    </svg>
-                </div>
-                <h2 class="plan-name">Starter Pack</h2>
-                <div class="price">$10 <span>/month</span></div>
-                <ul>
-                    <li>✔ Basic Features</li>
-                    <li>✔ Email Support</li>
-                    <li>✔ 5 Projects</li>
-                </ul>
-                <a href="#contact" class="btn">Choose Plan</a>
-            </div>
-            <!-- Pro Creator -->
-            <div class="pricing-card">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 64">
-                        <path fill="#16d6fa" d="M48 2C34 2 18 12 18 30v6L6 50l8 8 14-12h6c18 0 28-16 28-30 0-8-4-14-14-14zM24 30c0-10 8-18 18-18s18 8 18 18-8 18-18 18S24 40 24 30z"/>
-                        <circle cx="42" cy="30" r="6" fill="#ffd217"/>
-                    </svg>
-                </div>
-                <h2 class="plan-name">Pro Creator</h2>
-                <div class="price">$30 <span>/month</span></div>
-                <ul>
-                    <li>✔ All Starter Features</li>
-                    <li>✔ Premium Tools</li>
-                    <li>✔ Unlimited Projects</li>
-                </ul>
-                <a href="#contact" class="btn">Choose Plan</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer id="contact" class="bg-gray-800 text-white">
+    <footer id="contact" class="bg-gray-800 text-white mt-12">
         <div class="container mx-auto px-4 py-10 text-center">
             <h3 class="text-3xl font-bold mb-2">Let's Work Together</h3>
             <p class="text-gray-400 mb-6">Have a project in mind? I'd love to hear about it.</p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
                 <!-- Instagram -->
-                <a href="https://www.instagram.com/thepankaj.z" target="_blank" class="text-gray-300 hover:opacity-80 transition duration-300 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256">
-                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M16,3c-7.17,0 -13,5.83 -13,13v18c0,7.17 5.83,13 13,13h18c7.17,0 13,-5.83 13,-13v-18c0,-7.17 -5.83,-13 -13,-13zM37,11c1.1,0 2,0.9 2,2c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2c0,-1.1 0.9,-2 2,-2zM25,14c6.07,0 11,4.93 11,11c0,6.07 -4.93,11 -11,11c-6.07,0 -11,-4.93 -11,-11c0,-6.07 4.93,-11 11,-11zM25,16c-4.96,0 -9,4.04 -9,9c0,4.96 4.04,9 9,9c4.96,0 9,-4.04 9,-9c0,-4.96 -4.04,-9 -9,-9z"></path></g></g>
+                <a href="https://www.instagram.com/thepankaj.z" target="_blank" class="text-gray-300 hover:text-white transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256" class="fill-current">
+                        <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M16,3c-7.17,0 -13,5.83 -13,13v18c0,7.17 5.83,13 13,13h18c7.17,0 13,-5.83 13,-13v-18c0,-7.17 -5.83,-13 -13,-13zM37,11c1.1,0 2,0.9 2,2c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2c0,-1.1 0.9,-2 2,-2zM25,14c6.07,0 11,4.93 11,11c0,6.07 -4.93,11 -11,11c-6.07,0 -11,-4.93 -11,-11c0,-6.07 4.93,-11 11,-11zM25,16c-4.96,0 -9,4.04 -9,9c0,4.96 4.04,9 9,9c4.96,0 9,-4.04 9,-9c0,-4.96 -4.04,-9 -9,-9z"></path></g></g>
                     </svg>
                 </a>
                 <!-- WhatsApp -->
-                <a href="https://wa.me/7018168156" target="_blank" class="text-gray-300 hover:opacity-80 transition duration-300 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256">
-                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M25,2c-12.682,0 -23,10.318 -23,23c0,3.96 1.023,7.854 2.963,11.29l-2.926,10.44c-0.096,0.343 -0.003,0.711 0.245,0.966c0.191,0.197 0.451,0.304 0.718,0.304c0.08,0 0.161,-0.01 0.24,-0.029l10.896,-2.699c3.327,1.786 7.074,2.728 10.864,2.728c12.682,0 23,-10.318 23,-23c0,-12.682 -10.318,-23 -23,-23zM36.57,33.116c-0.492,1.362 -2.852,2.605 -3.986,2.772c-1.018,0.149 -2.306,0.213 -3.72,-0.231c-0.857,-0.27 -1.957,-0.628 -3.366,-1.229c-5.923,-2.526 -9.791,-8.415 -10.087,-8.804c-0.295,-0.389 -2.411,-3.161 -2.411,-6.03c0,-2.869 1.525,-4.28 2.067,-4.864c0.542,-0.584 1.181,-0.73 1.575,-0.73c0.394,0 0.787,0.005 1.132,0.021c0.363,0.018 0.85,-0.137 1.329,1.001c0.492,1.168 1.673,4.037 1.819,4.33c0.148,0.292 0.246,0.633 0.05,1.022c-0.196,0.389 -0.294,0.632 -0.59,0.973c-0.296,0.341 -0.62,0.76 -0.886,1.022c-0.296,0.291 -0.603,0.606 -0.259,1.19c0.344,0.584 1.529,2.493 3.285,4.039c2.255,1.986 4.158,2.602 4.748,2.894c0.59,0.292 0.935,0.243 1.279,-0.146c0.344,-0.39 1.476,-1.703 1.869,-2.286c0.393,-0.583 0.787,-0.487 1.329,-0.292c0.542,0.194 3.445,1.604 4.035,1.896c0.59,0.292 0.984,0.438 1.132,0.681c0.148,0.242 0.148,1.41 -0.344,2.771z"></path></g></g>
+                <a href="https://wa.me/7018168156" target="_blank" class="text-gray-300 hover:text-white transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256" class="fill-current">
+                        <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M25,2c-12.682,0 -23,10.318 -23,23c0,3.96 1.023,7.854 2.963,11.29l-2.926,10.44c-0.096,0.343 -0.003,0.711 0.245,0.966c0.191,0.197 0.451,0.304 0.718,0.304c0.08,0 0.161,-0.01 0.24,-0.029l10.896,-2.699c3.327,1.786 7.074,2.728 10.864,2.728c12.682,0 23,-10.318 23,-23c0,-12.682 -10.318,-23 -23,-23zM36.57,33.116c-0.492,1.362 -2.852,2.605 -3.986,2.772c-1.018,0.149 -2.306,0.213 -3.72,-0.231c-0.857,-0.27 -1.957,-0.628 -3.366,-1.229c-5.923,-2.526 -9.791,-8.415 -10.087,-8.804c-0.295,-0.389 -2.411,-3.161 -2.411,-6.03c0,-2.869 1.525,-4.28 2.067,-4.864c0.542,-0.584 1.181,-0.73 1.575,-0.73c0.394,0 0.787,0.005 1.132,0.021c0.363,0.018 0.85,-0.137 1.329,1.001c0.492,1.168 1.673,4.037 1.819,4.33c0.148,0.292 0.246,0.633 0.05,1.022c-0.196,0.389 -0.294,0.632 -0.59,0.973c-0.296,0.341 -0.62,0.76 -0.886,1.022c-0.296,0.291 -0.603,0.606 -0.259,1.19c0.344,0.584 1.529,2.493 3.285,4.039c2.255,1.986 4.158,2.602 4.748,2.894c0.59,0.292 0.935,0.243 1.279,-0.146c0.344,-0.39 1.476,-1.703 1.869,-2.286c0.393,-0.583 0.787,-0.487 1.329,-0.292c0.542,0.194 3.445,1.604 4.035,1.896c0.59,0.292 0.984,0.438 1.132,0.681c0.148,0.242 0.148,1.41 -0.344,2.771z"></path></g></g>
                     </svg>
                 </a>
                 <!-- Gmail -->
-                <a href="mailto:ZXOFFICIAL84@GMAIL.COM" class="text-gray-300 hover:opacity-80 transition duration-300 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256">
-                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M12,23.403v-0.013v-13.001l-0.12,-0.089h-0.01l-2.73,-2.02c-1.67,-1.24 -4.05,-1.18 -5.53,0.28c-0.99,0.98 -1.61,2.34 -1.61,3.85v3.602zM38,23.39v0.013l10,-7.391v-3.602c0,-1.49 -0.6,-2.85 -1.58,-3.83c-1.46,-1.457 -3.765,-1.628 -5.424,-0.403l-2.876,2.123l-0.12,0.089zM14,24.868l10.406,7.692c0.353,0.261 0.836,0.261 1.189,0l10.405,-7.692v-13.001l-11,8.133l-11,-8.133zM38,25.889v15.111c0,0.552 0.448,1 1,1h6.5c1.381,0 2.5,-1.119 2.5,-2.5v-21.003zM12,25.889l-10,-7.392v21.003c0,1.381 1.119,2.5 2.5,2.5h6.5c0.552,0 1,-0.448 1,-1z"></path></g></g>
+                <a href="mailto:ZXOFFICIAL84@GMAIL.COM" class="text-gray-300 hover:text-white transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256" class="fill-current">
+                        <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M12,23.403v-0.013v-13.001l-0.12,-0.089h-0.01l-2.73,-2.02c-1.67,-1.24 -4.05,-1.18 -5.53,0.28c-0.99,0.98 -1.61,2.34 -1.61,3.85v3.602zM38,23.39v0.013l10,-7.391v-3.602c0,-1.49 -0.6,-2.85 -1.58,-3.83c-1.46,-1.457 -3.765,-1.628 -5.424,-0.403l-2.876,2.123l-0.12,0.089zM14,24.868l10.406,7.692c0.353,0.261 0.836,0.261 1.189,0l10.405,-7.692v-13.001l-11,8.133l-11,-8.133zM38,25.889v15.111c0,0.552 0.448,1 1,1h6.5c1.381,0 2.5,-1.119 2.5,-2.5v-21.003zM12,25.889l-10,-7.392v21.003c0,1.381 1.119,2.5 2.5,2.5h6.5c0.552,0 1,-0.448 1,-1z"></path></g></g>
                     </svg>
                 </a>
             </div>
@@ -332,66 +150,92 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Mobile Menu Toggle
+        // --- Mobile Menu Logic ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Portfolio Filtering
-        const mainFilterButtons = document.querySelectorAll('.filter-btn');
-        const mainContentSections = document.querySelectorAll('.content-section');
-        const thumbnailNicheFilters = document.getElementById('thumbnail-niche-filters');
-        const nicheFilterButtons = document.querySelectorAll('.niche-filter-btn');
-        const nicheGalleries = document.querySelectorAll('.niche-gallery');
+        // Close mobile menu when a link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
-        mainFilterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                mainFilterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
 
-                const filter = button.dataset.filter;
+        // --- Portfolio Filtering Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainFilterButtons = document.querySelectorAll('.filter-btn');
+            const nicheFilterButtons = document.querySelectorAll('.niche-filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const thumbnailNicheFilters = document.getElementById('thumbnail-niche-filters');
 
-                // Hide all main content sections and niche galleries
-                mainContentSections.forEach(section => section.classList.add('hidden'));
-                nicheGalleries.forEach(gallery => gallery.classList.add('hidden'));
+            // Function to handle the filtering logic
+            function filterPortfolio() {
+                const activeMainFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                const activeNicheFilter = document.querySelector('.niche-filter-btn.active').dataset.niche;
 
-                if (filter === 'thumbnails') {
+                // Show/hide niche filters based on main category
+                if (activeMainFilter === 'thumbnails') {
                     thumbnailNicheFilters.classList.remove('hidden');
-                    // Show the first niche by default
-                    document.getElementById('educational-gallery').classList.remove('hidden');
-                    nicheFilterButtons.forEach(btn => btn.classList.remove('active'));
-                    document.querySelector('.niche-filter-btn[data-niche="educational"]').classList.add('active');
                 } else {
                     thumbnailNicheFilters.classList.add('hidden');
-                    const activeSection = document.getElementById(filter);
-                    if (activeSection) {
-                        activeSection.classList.remove('hidden');
+                }
+
+                // Loop through portfolio items and toggle visibility
+                portfolioItems.forEach(item => {
+                    const itemCategory = item.dataset.category;
+                    const itemNiche = item.dataset.niche;
+
+                    if (activeMainFilter === 'thumbnails') {
+                        if (itemCategory === 'thumbnails' && itemNiche === activeNicheFilter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
+                    } else {
+                        if (itemCategory === activeMainFilter) {
+                            item.classList.remove('hidden');
+                        } else {
+                            item.classList.add('hidden');
+                        }
                     }
-                }
+                });
+            }
+
+            // Add click event listeners to main filter buttons
+            mainFilterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    mainFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    filterPortfolio();
+                });
             });
-        });
 
-        nicheFilterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                nicheFilterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const niche = button.dataset.niche;
-                
-                nicheGalleries.forEach(gallery => gallery.classList.add('hidden'));
-                
-                const activeGallery = document.getElementById(niche + '-gallery');
-                if(activeGallery) {
-                    activeGallery.classList.remove('hidden');
-                }
+            // Add click event listeners to niche filter buttons
+            nicheFilterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    nicheFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    filterPortfolio();
+                });
             });
-        });
 
-        // Trigger a click on the first button on page load to set the initial state
-        document.querySelector('.filter-btn[data-filter="thumbnails"]').click();
+            // Set initial state
+            filterPortfolio();
+        });
 
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
