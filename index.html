@@ -17,12 +17,11 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
     <style>
-        /* Custom styles */
+        /* Main Page Styles */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f1f5f9; /* A slightly cooler gray */
         }
-        /* Simple animation for elements fading in */
         .fade-in {
             animation: fadeIn 0.8s ease-in-out;
         }
@@ -30,73 +29,68 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Style for active filter button (default) */
         .filter-btn.active {
-            background-color: #4f46e5; /* indigo-600 */
             color: white;
         }
-        /* Custom active colors for EACH primary button */
         .filter-btn[data-filter="thumbnails"].active { background-color: #4f46e5; } /* Indigo */
         .filter-btn[data-filter="banners"].active { background-color: #db2777; } /* Pink */
         .filter-btn[data-filter="posters"].active { background-color: #9333ea; } /* Purple */
         .filter-btn[data-filter="album-covers"].active { background-color: #b91c1c; } /* Red */
         .filter-btn[data-filter="twitter"].active { background-color: #0d9488; } /* Teal */
 
-        /* Custom active colors for niche buttons */
         .niche-filter-btn[data-niche="educational"].active { background-color: #15803d; } /* Green */
         .niche-filter-btn[data-niche="podcast"].active { background-color: #f97316; } /* Orange */
         .niche-filter-btn[data-niche="fitness"].active { background-color: #1d4ed8; } /* Blue */
         .niche-filter-btn[data-niche="finance"].active { background-color: #ca8a04; } /* Yellow */
         
-        /* Softer blur effect for non-active primary buttons, still clickable */
         .blurred {
             filter: blur(1px);
             opacity: 0.7;
             transition: all 0.3s ease-in-out;
         }
-    </style>
-     <style>
+
+       /* New Footer Styles */
       :root{
-        --bg:#090d12;
-        --bg-elev:#0f141b;
-        --fg:#e7edf5;
-        --muted:#9fb0c2;
-        --primary:#78a6ff;
-        --line:rgba(255,255,255,0.08);
-        --ring:rgba(120,166,255,0.35);
+        --footer-bg:#f7f9fc;
+        --footer-bg-elev:#ffffff;
+        --footer-fg:#222c3a;
+        --footer-muted:#6c7a89;
+        --footer-primary:#3478f6;
+        --footer-line:rgba(0,0,0,0.08);
+        --footer-ring:rgba(52,120,246,0.18);
       }
-      .footer{position:relative;isolation:isolate}
-      .footer__wrap{max-width:1200px;margin-inline:auto;padding:56px 24px;}
-      .footer__shell{background:linear-gradient(180deg,var(--bg-elev),#0b1016);border:1px solid var(--line);border-radius:20px;padding:40px;box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03)}
-      .brand{display:flex;gap:18px;align-items:center}
-      .logo{display:grid;place-items:center;width:56px;height:56px;border-radius:14px;background:radial-gradient(120% 120% at 0% 0%, #2a3a55 0%, #192335 45%, #0d1521 100%);border:1px solid var(--line);box-shadow:inset 0 0 40px rgba(120,166,255,.1), 0 8px 20px rgba(0,0,0,.35)}
-      .logo__text{font-family:"Bebas Neue",system-ui,Arial,sans-serif;letter-spacing:0.5px;font-size:28px;line-height:1}
-      .brand__title{display:flex;flex-direction:column}
-      .brand__name{font-family:"Bebas Neue",system-ui,Arial,sans-serif;font-size:40px;line-height:.9;letter-spacing:1px}
-      .brand__tag{color:var(--muted);font-size:14px}
+      .footer{position:relative;isolation:isolate; background:linear-gradient(180deg,var(--footer-bg),#e9eef5);color:var(--footer-fg);}
+      .footer__wrap{max-width:1200px;margin-inline:auto;padding:32px 12px;}
+      .footer__shell{background:linear-gradient(180deg,var(--footer-bg-elev),#f3f6fa);border:1px solid var(--footer-line);border-radius:20px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,.08), inset 0 1px 0 rgba(0,0,0,.03);}
+      .footer .brand{display:flex;gap:18px;align-items:center}
+      .footer .logo{display:grid;place-items:center;width:56px;height:56px;border-radius:14px;background:radial-gradient(120% 120% at 0% 0%, #e3eaf5 0%, #cfd8e7 45%, #f7f9fc 100%);border:1px solid var(--footer-line);box-shadow:inset 0 0 40px rgba(52,120,246,.08), 0 8px 20px rgba(0,0,0,.08)}
+      .footer .logo__text{font-family:"Bebas Neue",system-ui,Arial,sans-serif;letter-spacing:0.5px;font-size:28px;line-height:1}
+      .footer .brand__title{display:flex;flex-direction:column}
+      .footer .brand__name{font-family:"Bebas Neue",system-ui,Arial,sans-serif;font-size:40px;line-height:.9;letter-spacing:1px}
+      .footer .brand__tag{color:var(--footer-muted);font-size:14px}
 
-      .grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:32px;margin-top:32px}
-      @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}.col--brand{grid-column:1/-1}}
-      @media (max-width:560px){.grid{grid-template-columns:1fr}}
+      .footer .grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:32px;margin-top:32px}
+      @media (max-width:900px){.footer .grid{grid-template-columns:1fr 1fr}.footer .col--brand{grid-column:1/-1}}
+      @media (max-width:560px){.footer .grid{grid-template-columns:1fr}.footer .footer__shell{padding:12px;}}
 
-      .col h4{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px 0}
-      .col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-      .col a{color:var(--fg); display:inline-flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;border:1px solid transparent;transition:all .2s ease}
-      .col a:hover{border-color:var(--line);background:rgba(255,255,255,.02);box-shadow:0 0 0 6px var(--ring)}
+      .footer .col h4{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--footer-muted);margin:0 0 14px 0}
+      .footer .col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+      .footer .col a{color:var(--footer-fg); display:inline-flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;border:1px solid transparent;transition:all .2s ease}
+      .footer .col a:hover{border-color:var(--footer-line);background:rgba(0,0,0,.02);box-shadow:0 0 0 6px var(--footer-ring)}
 
-      .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
-      .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+      .footer .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:rgba(0,0,0,.03);border:1px solid var(--footer-line)}
+      .footer .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 
-      .divider{height:1px;background:var(--line);margin:28px 0}
+      .footer .divider{height:1px;background:var(--footer-line);margin:28px 0}
 
-      .bottom{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-      .bottom__left{display:flex;gap:16px;align-items:center}
-      .copyright{color:var(--muted);font-size:13px}
+      .footer .bottom{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+      .footer .bottom__left{display:flex;gap:16px;align-items:center}
+      .footer .copyright{color:var(--footer-muted);font-size:13px}
 
-      .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,#101826,#0b111b);text-decoration:none}
-      .cta:hover{box-shadow:0 0 0 6px var(--ring)}
+      .footer .cta{color:var(--footer-fg); display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--footer-line);background:linear-gradient(180deg,#e9eef5,#f3f6fa);text-decoration:none}
+      .footer .cta:hover{box-shadow:0 0 0 6px var(--footer-ring)}
 
-      .icon{width:18px;height:18px;display:inline-block}
+      .footer .icon{width:18px;height:18px;display:inline-block}
      </style>
 </head>
 <body class="bg-gray-100">
@@ -285,7 +279,6 @@
                   <span class="chip">YouTube</span>
                   <span class="chip">Instagram</span>
                   <span class="chip">Twitter / X</span>
-                  <span class="chip">Spotify / Apple Music</span>
                 </div>
               </div>
     
@@ -330,7 +323,7 @@
                   <li><span class="chip">24–48h reply</span></li>
                   <li><span class="chip">Worldwide</span></li>
                 </ul>
-                <a class="cta" href="mailto:ZXOFFICIAL84@GMAIL.COM">
+                <a class="cta" href="mailto:ZXOFFICIAL84@GMAIL.COM" style="margin-top: 14px;">
                   <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
                   Start a Project
                 </a>
@@ -354,11 +347,6 @@
       </footer>
       <!-- FOOTER END -->
     
-      <script>
-        // Set year dynamically
-        document.getElementById('year').textContent = new Date().getFullYear();
-      </script>
-
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -416,15 +404,15 @@
 
                     if (activeMainFilter === 'thumbnails') {
                         if (itemCategory === 'thumbnails' && itemNiche === activeNicheFilter) {
-                            item.classList.remove('hidden');
+                            item.style.display = 'block';
                         } else {
-                            item.classList.add('hidden');
+                            item.style.display = 'none';
                         }
                     } else {
                         if (itemCategory === activeMainFilter) {
-                            item.classList.remove('hidden');
+                            item.style.display = 'block';
                         } else {
-                            item.classList.add('hidden');
+                            item.style.display = 'none';
                         }
                     }
                 });
@@ -451,6 +439,9 @@
             // Set initial state
             filterPortfolio();
         });
+        
+        // Set year dynamically in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
