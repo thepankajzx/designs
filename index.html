@@ -191,6 +191,7 @@
     </section>
         
         <!-- Portfolio Section -->
+        
         <section id="work" class="fade-in py-12">
             
             <!-- Main Filter Navigation -->
@@ -570,6 +571,40 @@
         // Set year dynamically in footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+    <!-- Back to Top Button -->
+<button id="back-to-top" title="Back to Top" 
+        class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 pointer-events-none z-50">
+    ↑
+</button>
+
+<style>
+    /* Button animation */
+    #back-to-top {
+        font-size: 1.25rem;
+        line-height: 1;
+    }
+</style>
+
+<script>
+    // Show/hide button on scroll
+    const backToTop = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) { // Show after 300px scroll
+            backToTop.classList.remove("opacity-0", "pointer-events-none");
+            backToTop.classList.add("opacity-100");
+        } else {
+            backToTop.classList.add("opacity-0", "pointer-events-none");
+            backToTop.classList.remove("opacity-100");
+        }
+    });
+
+    // Smooth scroll to top
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>
+
 </body>
 </html>
 
