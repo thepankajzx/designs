@@ -8,10 +8,10 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Inter & Bebas Neue -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -20,6 +20,7 @@
         /* Custom styles */
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* A slightly cooler gray */
         }
         /* Simple animation for elements fading in */
         .fade-in {
@@ -29,28 +30,74 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Style for active filter button */
-        .filter-btn.active, .niche-filter-btn.active {
+        /* Style for active filter button (default) */
+        .filter-btn.active {
             background-color: #4f46e5; /* indigo-600 */
             color: white;
         }
-        /* Custom active color for album covers button */
-        .filter-btn[data-filter="album-covers"].active {
-            background-color: #b91c1c; /* Tailwind red-700 */
-        }
-        /* Custom active color for educational niche button */
-        .niche-filter-btn[data-niche="educational"].active {
-            background-color: #15803d; /* Tailwind green-700 */
-        }
-        /* Custom active color for podcast niche button */
-        .niche-filter-btn[data-niche="podcast"].active {
-            background-color: #f97316; /* Tailwind orange-500 */
-        }
-        /* Custom active color for fitness niche button */
-        .niche-filter-btn[data-niche="fitness"].active {
-            background-color: #1d4ed8; /* Tailwind blue-700 */
+        /* Custom active colors for EACH primary button */
+        .filter-btn[data-filter="thumbnails"].active { background-color: #4f46e5; } /* Indigo */
+        .filter-btn[data-filter="banners"].active { background-color: #db2777; } /* Pink */
+        .filter-btn[data-filter="posters"].active { background-color: #9333ea; } /* Purple */
+        .filter-btn[data-filter="album-covers"].active { background-color: #b91c1c; } /* Red */
+        .filter-btn[data-filter="twitter"].active { background-color: #0d9488; } /* Teal */
+
+        /* Custom active colors for niche buttons */
+        .niche-filter-btn[data-niche="educational"].active { background-color: #15803d; } /* Green */
+        .niche-filter-btn[data-niche="podcast"].active { background-color: #f97316; } /* Orange */
+        .niche-filter-btn[data-niche="fitness"].active { background-color: #1d4ed8; } /* Blue */
+        .niche-filter-btn[data-niche="finance"].active { background-color: #ca8a04; } /* Yellow */
+        
+        /* Softer blur effect for non-active primary buttons, still clickable */
+        .blurred {
+            filter: blur(1px);
+            opacity: 0.7;
+            transition: all 0.3s ease-in-out;
         }
     </style>
+     <style>
+      :root{
+        --bg:#090d12;
+        --bg-elev:#0f141b;
+        --fg:#e7edf5;
+        --muted:#9fb0c2;
+        --primary:#78a6ff;
+        --line:rgba(255,255,255,0.08);
+        --ring:rgba(120,166,255,0.35);
+      }
+      .footer{position:relative;isolation:isolate}
+      .footer__wrap{max-width:1200px;margin-inline:auto;padding:56px 24px;}
+      .footer__shell{background:linear-gradient(180deg,var(--bg-elev),#0b1016);border:1px solid var(--line);border-radius:20px;padding:40px;box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03)}
+      .brand{display:flex;gap:18px;align-items:center}
+      .logo{display:grid;place-items:center;width:56px;height:56px;border-radius:14px;background:radial-gradient(120% 120% at 0% 0%, #2a3a55 0%, #192335 45%, #0d1521 100%);border:1px solid var(--line);box-shadow:inset 0 0 40px rgba(120,166,255,.1), 0 8px 20px rgba(0,0,0,.35)}
+      .logo__text{font-family:"Bebas Neue",system-ui,Arial,sans-serif;letter-spacing:0.5px;font-size:28px;line-height:1}
+      .brand__title{display:flex;flex-direction:column}
+      .brand__name{font-family:"Bebas Neue",system-ui,Arial,sans-serif;font-size:40px;line-height:.9;letter-spacing:1px}
+      .brand__tag{color:var(--muted);font-size:14px}
+
+      .grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:32px;margin-top:32px}
+      @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}.col--brand{grid-column:1/-1}}
+      @media (max-width:560px){.grid{grid-template-columns:1fr}}
+
+      .col h4{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px 0}
+      .col ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+      .col a{color:var(--fg); display:inline-flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;border:1px solid transparent;transition:all .2s ease}
+      .col a:hover{border-color:var(--line);background:rgba(255,255,255,.02);box-shadow:0 0 0 6px var(--ring)}
+
+      .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+      .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+      .divider{height:1px;background:var(--line);margin:28px 0}
+
+      .bottom{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+      .bottom__left{display:flex;gap:16px;align-items:center}
+      .copyright{color:var(--muted);font-size:13px}
+
+      .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,#101826,#0b111b);text-decoration:none}
+      .cta:hover{box-shadow:0 0 0 6px var(--ring)}
+
+      .icon{width:18px;height:18px;display:inline-block}
+     </style>
 </head>
 <body class="bg-gray-100">
 
@@ -64,7 +111,6 @@
                 <!-- Right Side: Navigation -->
                 <nav class="hidden md:flex items-center space-x-6">
                     <a href="#work" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Work</a>
-                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 font-semibold transition duration-300">Contact</a>
                 </nav>
                 
                 <!-- Mobile Menu Button -->
@@ -78,38 +124,29 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <a href="#work" class="block py-3 px-4 text-sm text-gray-700 hover:bg-gray-100 mobile-nav-link">Work</a>
-            <a href="#contact" class="block py-3 px-4 text-sm text-gray-700 hover:bg-gray-100 mobile-nav-link">Contact</a>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
-        
-        <!-- Hero Section -->
-        <section class="text-center py-12 md:py-20 fade-in">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">Pankaj Chauhan</h1>
-            <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-8">Creative Visual Designer specializing in compelling visuals that grab attention and boost engagement, from thumbnails and banners to product designs.</p>
-            <a href="#work" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full hover:bg-indigo-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">View My Work</a>
-        </section>
 
         <!-- Portfolio Section -->
         <section id="work" class="fade-in py-12">
             
             <!-- Main Filter Navigation -->
-            <div class="flex justify-center flex-wrap gap-2 md:gap-4 mb-8">
+            <div id="main-filters" class="flex justify-center flex-wrap gap-2 md:gap-4 mb-8">
                 <button class="filter-btn active font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="thumbnails">Thumbnails</button>
                 <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="banners">Banners</button>
                 <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="posters">Posters</button>
                 <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="album-covers">Album Covers</button>
-                <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="product-designs">Product Designs</button>
-                <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="x-headers">X Headers</button>
+                <button class="filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-filter="twitter">Twitter</button>
             </div>
 
             <!-- Thumbnail Niches Filter Navigation -->
             <div id="thumbnail-niche-filters" class="flex justify-center flex-wrap gap-2 md:gap-4 mb-12">
                 <button class="niche-filter-btn active font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="educational">Educational</button>
                 <button class="niche-filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="fitness">Fitness</button>
-                <button class="niche-filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="stock-market">Stock Market</button>
+                <button class="niche-filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="finance">Finance</button>
                 <button class="niche-filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="vlog">Vlog</button>
                 <button class="niche-filter-btn font-semibold px-4 py-2 rounded-full transition duration-300 bg-white shadow-sm hover:bg-gray-200" data-niche="podcast">Podcast</button>
             </div>
@@ -136,6 +173,38 @@
                 </div>
                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="fitness">
                     <img src="https://github.com/thepankajzx/IMAGES/blob/main/ultimate%20(1).png?raw=true" class="w-full h-full object-cover" alt="Fitness Thumbnail Ultimate" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+
+                 <!-- Finance Thumbnails -->
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/02-01.jpeg" class="w-full h-full object-cover" alt="Finance Thumbnail 1" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/1%20showroom%20(1).png" class="w-full h-full object-cover" alt="Finance Thumbnail 2" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/2_20250713_164731_0000-01.jpeg" class="w-full h-full object-cover" alt="Finance Thumbnail 3" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/3_20250713_164732_0001-01.jpeg" class="w-full h-full object-cover" alt="Finance Thumbnail 4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/4-01.jpeg" class="w-full h-full object-cover" alt="Finance Thumbnail 5" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/56.png" class="w-full h-full object-cover" alt="Finance Thumbnail 6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/57.png" class="w-full h-full object-cover" alt="Finance Thumbnail 7" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/900.png" class="w-full h-full object-cover" alt="Finance Thumbnail 8" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/7888.png" class="w-full h-full object-cover" alt="Finance Thumbnail 9" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="finance">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/FITNESS/main/CL12.png" class="w-full h-full object-cover" alt="Finance Thumbnail 10" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
                 </div>
 
                 <!-- Podcast Thumbnails -->
@@ -187,42 +256,108 @@
                 </div>
             </div>
         </section>
-
     </main>
-
-    <!-- Footer -->
-    <footer id="contact" class="bg-gray-800 text-white mt-12">
-        <div class="container mx-auto px-4 py-10 text-center">
-            <h3 class="text-3xl font-bold mb-2">Let's Work Together</h3>
-            <p class="text-gray-400 mb-6">Have a project in mind? I'd love to hear about it.</p>
-            
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8">
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/thepankaj.z" target="_blank" class="text-gray-300 hover:text-white transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256" class="fill-current">
-                        <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M16,3c-7.17,0 -13,5.83 -13,13v18c0,7.17 5.83,13 13,13h18c7.17,0 13,-5.83 13,-13v-18c0,-7.17 -5.83,-13 -13,-13zM37,11c1.1,0 2,0.9 2,2c0,1.1 -0.9,2 -2,2c-1.1,0 -2,-0.9 -2,-2c0,-1.1 0.9,-2 2,-2zM25,14c6.07,0 11,4.93 11,11c0,6.07 -4.93,11 -11,11c-6.07,0 -11,-4.93 -11,-11c0,-6.07 4.93,-11 11,-11zM25,16c-4.96,0 -9,4.04 -9,9c0,4.96 4.04,9 9,9c4.96,0 9,-4.04 9,-9c0,-4.96 -4.04,-9 -9,-9z"></path></g></g>
-                    </svg>
-                </a>
-                <!-- WhatsApp -->
-                <a href="https://wa.me/7018168156" target="_blank" class="text-gray-300 hover:text-white transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256" class="fill-current">
-                        <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M25,2c-12.682,0 -23,10.318 -23,23c0,3.96 1.023,7.854 2.963,11.29l-2.926,10.44c-0.096,0.343 -0.003,0.711 0.245,0.966c0.191,0.197 0.451,0.304 0.718,0.304c0.08,0 0.161,-0.01 0.24,-0.029l10.896,-2.699c3.327,1.786 7.074,2.728 10.864,2.728c12.682,0 23,-10.318 23,-23c0,-12.682 -10.318,-23 -23,-23zM36.57,33.116c-0.492,1.362 -2.852,2.605 -3.986,2.772c-1.018,0.149 -2.306,0.213 -3.72,-0.231c-0.857,-0.27 -1.957,-0.628 -3.366,-1.229c-5.923,-2.526 -9.791,-8.415 -10.087,-8.804c-0.295,-0.389 -2.411,-3.161 -2.411,-6.03c0,-2.869 1.525,-4.28 2.067,-4.864c0.542,-0.584 1.181,-0.73 1.575,-0.73c0.394,0 0.787,0.005 1.132,0.021c0.363,0.018 0.85,-0.137 1.329,1.001c0.492,1.168 1.673,4.037 1.819,4.33c0.148,0.292 0.246,0.633 0.05,1.022c-0.196,0.389 -0.294,0.632 -0.59,0.973c-0.296,0.341 -0.62,0.76 -0.886,1.022c-0.296,0.291 -0.603,0.606 -0.259,1.19c0.344,0.584 1.529,2.493 3.285,4.039c2.255,1.986 4.158,2.602 4.748,2.894c0.59,0.292 0.935,0.243 1.279,-0.146c0.344,-0.39 1.476,-1.703 1.869,-2.286c0.393,-0.583 0.787,-0.487 1.329,-0.292c0.542,0.194 3.445,1.604 4.035,1.896c0.59,0.292 0.984,0.438 1.132,0.681c0.148,0.242 0.148,1.41 -0.344,2.771z"></path></g></g>
-                    </svg>
-                </a>
-                <!-- Gmail -->
-                <a href="mailto:ZXOFFICIAL84@GMAIL.COM" class="text-gray-300 hover:text-white transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256" class="fill-current">
-                        <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M12,23.403v-0.013v-13.001l-0.12,-0.089h-0.01l-2.73,-2.02c-1.67,-1.24 -4.05,-1.18 -5.53,0.28c-0.99,0.98 -1.61,2.34 -1.61,3.85v3.602zM38,23.39v0.013l10,-7.391v-3.602c0,-1.49 -0.6,-2.85 -1.58,-3.83c-1.46,-1.457 -3.765,-1.628 -5.424,-0.403l-2.876,2.123l-0.12,0.089zM14,24.868l10.406,7.692c0.353,0.261 0.836,0.261 1.189,0l10.405,-7.692v-13.001l-11,8.133l-11,-8.133zM38,25.889v15.111c0,0.552 0.448,1 1,1h6.5c1.381,0 2.5,-1.119 2.5,-2.5v-21.003zM12,25.889l-10,-7.392v21.003c0,1.381 1.119,2.5 2.5,2.5h6.5c0.552,0 1,-0.448 1,-1z"></path></g></g>
-                    </svg>
-                </a>
+    
+    <!-- FOOTER START -->
+    <footer class="footer">
+        <div class="footer__wrap">
+          <div class="footer__shell">
+            <div class="brand col--brand">
+              <div class="logo" aria-hidden="true">
+                <span class="logo__text">Z84</span>
+              </div>
+              <div class="brand__title">
+                <div class="brand__name" aria-label="Brand name Z84">Z84</div>
+                <div class="brand__tag">Creative Studio • Thumbnails, Social Media Banners & Headers, Posters, Album Covers</div>
+              </div>
             </div>
-
-            <div class="border-t border-gray-700 mt-8 pt-6 text-sm text-gray-500">
-                <p>&copy; 2025 Z84. All Rights Reserved.</p>
+    
+            <div class="grid">
+              <div class="col">
+                <h4>Services</h4>
+                <ul>
+                  <li><span class="chip">Thumbnails</span></li>
+                  <li><span class="chip">Social Media Banners & Headers</span></li>
+                  <li><span class="chip">Posters</span></li>
+                  <li><span class="chip">Album Covers</span></li>
+                </ul>
+                <div class="chips">
+                  <span class="chip">YouTube</span>
+                  <span class="chip">Instagram</span>
+                  <span class="chip">Twitter / X</span>
+                  <span class="chip">Spotify / Apple Music</span>
+                </div>
+              </div>
+    
+              <div class="col">
+                <h4>Contact</h4>
+                <ul>
+                  <li>
+                    <a href="mailto:ZXOFFICIAL84@GMAIL.COM" aria-label="Email Z84">
+                      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
+                      ZXOFFICIAL84@GMAIL.COM
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://wa.me/7018168156" target="_blank" rel="noopener" aria-label="WhatsApp Z84">
+                      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05.07C5.53.07.27 5.33.27 11.86c0 2.1.55 4.06 1.52 5.78L.02 24l6.49-1.7a11.74 11.74 0 0 0 5.53 1.41h.01c6.53 0 11.78-5.26 11.78-11.78 0-3.15-1.25-6.11-3.31-8.15ZM12.05 21.3h-.01a9.43 9.43 0 0 1-4.8-1.31l-.34-.2-3.85 1.01 1.03-3.75-.22-.35a9.45 9.45 0 0 1-1.47-5.09c0-5.21 4.24-9.45 9.45-9.45 2.54 0 4.93.99 6.72 2.78a9.45 9.45 0 0 1 2.77 6.72c0 5.21-4.24 9.44-9.45 9.44Zm5.42-7.07c-.3-.15-1.77-.87-2.05-.96-.27-.1-.47-.15-.67.15-.2.29-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.51-1.8-1.69-2.1-.18-.29-.02-.45.13-.6.14-.14.3-.36.45-.54.15-.19.2-.32.3-.54.1-.22.05-.41-.02-.57-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01a1.1 1.1 0 0 0-.8.37c-.27.29-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.21 5.08 4.5.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.09 1.77-.72 2.02-1.41.25-.69.25-1.28.18-1.41-.08-.13-.27-.21-.57-.36Z"/></svg>
+                      +91 7018168156
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/thepankaj.z/" target="_blank" rel="noopener" aria-label="Instagram Z84">
+                      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2Zm5.8-.65a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0Z"/></svg>
+                      @thepankaj.z
+                    </a>
+                  </li>
+                </ul>
+              </div>
+    
+              <div class="col">
+                <h4>Quick Links</h4>
+                <ul>
+                  <li><a href="#work">Portfolio</a></li>
+                  <li><a href="#services">Services</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                </ul>
+              </div>
+    
+              <div class="col">
+                <h4>Availability</h4>
+                <ul>
+                  <li><span class="chip">Open for freelance</span></li>
+                  <li><span class="chip">24–48h reply</span></li>
+                  <li><span class="chip">Worldwide</span></li>
+                </ul>
+                <a class="cta" href="mailto:ZXOFFICIAL84@GMAIL.COM">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
+                  Start a Project
+                </a>
+              </div>
             </div>
+    
+            <div class="divider"></div>
+    
+            <div class="bottom">
+              <div class="bottom__left">
+                <div class="logo" aria-hidden="true" style="width:36px;height:36px;border-radius:10px;font-size:18px"><span class="logo__text">Z84</span></div>
+                <span class="copyright">© <span id="year"></span> Z84. All rights reserved.</span>
+              </div>
+              <a class="cta" href="https://www.instagram.com/thepankaj.z/" target="_blank" rel="noopener" aria-label="Follow on Instagram">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Z"/></svg>
+                Follow @thepankaj.z
+              </a>
+            </div>
+          </div>
         </div>
-    </footer>
-
+      </footer>
+      <!-- FOOTER END -->
+    
+      <script>
+        // Set year dynamically
+        document.getElementById('year').textContent = new Date().getFullYear();
+      </script>
 
     <script>
         // Initialize Lucide Icons
@@ -257,11 +392,21 @@
                 const activeMainFilter = document.querySelector('.filter-btn.active').dataset.filter;
                 const activeNicheFilter = document.querySelector('.niche-filter-btn.active').dataset.niche;
 
-                // Show/hide niche filters based on main category
+                // Show/hide niche filters and apply blur
                 if (activeMainFilter === 'thumbnails') {
                     thumbnailNicheFilters.classList.remove('hidden');
+                    // Blur other primary buttons
+                    mainFilterButtons.forEach(btn => {
+                        if (btn.dataset.filter !== 'thumbnails') {
+                            btn.classList.add('blurred');
+                        } else {
+                            btn.classList.remove('blurred');
+                        }
+                    });
                 } else {
                     thumbnailNicheFilters.classList.add('hidden');
+                    // Remove blur from all primary buttons
+                    mainFilterButtons.forEach(btn => btn.classList.remove('blurred'));
                 }
 
                 // Loop through portfolio items and toggle visibility
@@ -306,7 +451,6 @@
             // Set initial state
             filterPortfolio();
         });
-
     </script>
 </body>
 </html>
