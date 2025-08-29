@@ -38,6 +38,18 @@
         .filter-btn[data-filter="album-covers"].active {
             background-color: #b91c1c; /* Tailwind red-700 */
         }
+        /* Custom active color for educational niche button */
+        .niche-filter-btn[data-niche="educational"].active {
+            background-color: #15803d; /* Tailwind green-700 */
+        }
+        /* Custom active color for podcast niche button */
+        .niche-filter-btn[data-niche="podcast"].active {
+            background-color: #f97316; /* Tailwind orange-500 */
+        }
+        /* Custom active color for fitness niche button */
+        .niche-filter-btn[data-niche="fitness"].active {
+            background-color: #1d4ed8; /* Tailwind blue-700 */
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -104,9 +116,53 @@
 
             <!-- Portfolio Content Grid -->
             <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <!-- Educational Thumbnails -->
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="educational">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/main/SAVE_20250821_011656-01.jpeg" class="w-full h-full object-cover" alt="Educational Thumbnail 1" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="educational">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/main/SAVE_20250822_152306-01.jpeg" class="w-full h-full object-cover" alt="Educational Thumbnail 2" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="educational">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/main/SAVE_20250822_153133-01.jpeg" class="w-full h-full object-cover" alt="Educational Thumbnail 3" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+
+                <!-- Fitness Thumbnails -->
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="fitness">
+                    <img src="https://github.com/thepankajzx/IMAGES/blob/main/RONNIE.jpeg?raw=true" class="w-full h-full object-cover" alt="Fitness Thumbnail Ronnie Coleman" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="fitness">
+                    <img src="https://github.com/thepankajzx/IMAGES/blob/main/TOP%205.png?raw=true" class="w-full h-full object-cover" alt="Fitness Thumbnail Top 5" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="fitness">
+                    <img src="https://github.com/thepankajzx/IMAGES/blob/main/ultimate%20(1).png?raw=true" class="w-full h-full object-cover" alt="Fitness Thumbnail Ultimate" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+
+                <!-- Podcast Thumbnails -->
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="podcast">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/5b6dac39b4f4715dbb1d677cbce2421280f199c1/1%20soohowroom%20(1).png" class="w-full h-full object-cover" alt="Podcast Thumbnail 1" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="podcast">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/5b6dac39b4f4715dbb1d677cbce2421280f199c1/bharat%20m%20jain%20podcast.png" class="w-full h-full object-cover" alt="Podcast Thumbnail 2" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="podcast">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/5b6dac39b4f4715dbb1d677cbce2421280f199c1/CHEF%20PODCAST%2001.png" class="w-full h-full object-cover" alt="Podcast Thumbnail 3" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="podcast">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/5b6dac39b4f4715dbb1d677cbce2421280f199c1/CLIENT%2012%20(1)-01.jpeg" class="w-full h-full object-cover" alt="Podcast Thumbnail 4" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="podcast">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/5b6dac39b4f4715dbb1d677cbce2421280f199c1/CLIENT%2012-01.jpeg" class="w-full h-full object-cover" alt="Podcast Thumbnail 5" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+                <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="thumbnails" data-niche="podcast">
+                    <img src="https://raw.githubusercontent.com/thepankajzx/ALBUM-COVERS/5b6dac39b4f4715dbb1d677cbce2421280f199c1/SAVE_20241125_182447-01.jpeg" class="w-full h-full object-cover" alt="Podcast Thumbnail 6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
+                </div>
+
+                <!-- Banners -->
                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="banners">
                     <img src="https://github.com/thepankajzx/IMAGES/blob/main/BANNERS/SAVE_20240825_243841-01.jpeg?raw=true" class="w-full h-full object-cover" alt="YouTube Banner" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
                 </div>
+                <!-- Posters -->
                 <div class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group" data-category="posters">
                     <img src="https://raw.githubusercontent.com/thepankajzx/IMAGES/main/POSTERS/1%20soohowroom%20(1).png" class="w-full h-full object-cover" alt="Showroom Poster" onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/000?text=Image+Error';">
                 </div>
