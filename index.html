@@ -228,6 +228,42 @@
             // Set initial state
             filterPortfolio();
         });
+        <!-- Portfolio Content Grid -->
+<div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"></div>
+
+<script>
+  // List of all image filenames in your GitHub repo
+  const images = [
+    "1.png", "11.png", "12.png", "8.png", "FGHFG.png", "RDFGHJ.png", "YYYYYYY.png",
+    "02-01.jpeg", "1 showroom (1).png", "1 soohowroom (1).png", "17.png", "20.png", "56.png",
+    "57.png", "7888.png", "900.png", "CHEF PODCAST 01.png", "CL12.png", "CLIENT 12 (1)-01.jpeg",
+    "CLIENT 12 (2).png", "CLIENT 12-01.jpeg", "CLIENT 12_20250708_203718_0000-01-01.jpeg",
+    "DFGHJK.png", "Green Passive Income Ideas YouTube Thumbnail (7).png", "HARSHIT (1).png",
+    "HARSHIT.png", "IMG-20250808-WA0000-01.jpeg", "LIVE Intraday  (3).png",
+    "PRICING + SOME THUMBNSILD (2).png", "RONNIE.jpeg", "SAVE_20241125_182447-01.jpeg",
+    "SAVE_20250821_011656-01.jpeg", "SAVE_20250822_152306-01.jpeg", "SAVE_20250822_153133-01.jpeg",
+    "SAVE_20250825_243841-01.jpeg", "SDFGH.png", "TOP 5 (2)-01.jpeg", "TOP 5.png", "TOPIC.jpeg",
+    "WARNING-01.jpeg", "bharat m jain podcast.png", "df.png", "dfghj.png", "i tried-01.jpeg",
+    "sdfghjhgfd.png", "sdfsdfsd.png", "sertyu.png", "ultimate (1).png"
+  ];
+
+  const grid = document.getElementById("portfolio-grid");
+
+  images.forEach(img => {
+    const div = document.createElement("div");
+    div.className = "portfolio-item bg-white rounded-lg shadow-lg overflow-hidden group";
+    div.dataset.category = "album-covers";
+
+    const image = document.createElement("img");
+    image.src = `https://raw.githubusercontent.com/thepankajzx/IMAGES/main/${encodeURIComponent(img)}`;
+    image.alt = img;
+    image.className = "w-full h-full object-cover";
+
+    div.appendChild(image);
+    grid.appendChild(div);
+  });
+</script>
+
 
     </script>
 </body>
